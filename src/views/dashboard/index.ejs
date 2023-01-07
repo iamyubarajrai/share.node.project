@@ -1,0 +1,52 @@
+<%- include('./layout/header') %> 
+    <div class="container mt-3">
+        <div class="row d-flex"> 
+            <% if(message) { %>
+                <div class="col-12 alert alert-<%= message.type %>">
+                    <%= message.message %> 
+                </div>
+            <% } %>  
+            <div class="col-12 col-md-4 d-flex">
+                <div class="alert alert-success w-100" role="alert">
+                  <div class="lead">
+                      <h3 class="display-6">Profile</h3>
+                      <p>You can manage your account details.</p>
+                  </div>
+                  <a href="#" class="link-secondary">View Profile</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 d-flex">
+                <div class="alert alert-warning w-100" role="alert">
+                  <div class="lead">
+                      <h3 class="display-6">Articles</h3>
+                      <p>Articles listed from National Basketball Association.</p>
+                  </div>
+                  <span class="badge text-bg-warning p-2">20 Articles Available</span>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 d-flex">
+                <div class="alert alert-info w-100" role="alert">
+                    <div class="lead">
+                        <h3 class="display-6">Categories</h3>
+                        <p>Categories for the articles of NBA.</p>
+                    </div>
+                    <span class="badge text-bg-success p-2">2 Categoeis Available</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-3 bg-light p-3">
+        <div class="row d-flex">
+            <div class="col-12">
+                <h2 class="display-5">Latest Articles</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">A fourth item</li>
+                    <li class="list-group-item">And a fifth one</li>
+                  </ul>
+            </div>
+          </div>
+    </div>
+<%- include('./layout/footer') %> 

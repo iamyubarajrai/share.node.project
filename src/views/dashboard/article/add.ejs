@@ -1,0 +1,54 @@
+<%- include('../layout/header') %> 
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="display-6">New Article</h1>
+            <form action="/dashboard/articles/add" method="POST" enctype="multipart/form-data" class="row">
+                <div class="col-12 col-lg-9">
+                    <div class="form-control p-4">
+                        <label for="title" class="form-label"><strong>Title</strong></label>
+                        <input type="text" class="form-control" name="title" id="title" placeholder="Add Title...">
+                        <span class="error"></span>
+                        <br/><br/>
+                        <label for="content" class="form-label"><strong>Content</strong></label>
+                        <textarea class="form-control richtext" name="content" id="content" placeholder="Add Content..." data_rich_textarea="true"></textarea>
+                    </div>
+                    <div class="form-control mt-4 p-4">
+                        <h4>Article Meta</h4>
+                        <!-- <p>No meta found!</p> -->
+                        <label for="author" class="form-label">Author Name</label>
+                        <input type="text" class="form-control" name="author" id="author" placeholder="Add Author...">
+                        <br/>
+                        <label for="team_name" class="form-label">Team Name</label>
+                        <input type="text" class="form-control" name="team_name" id="team_name" placeholder="Add team name...">
+                    </div>
+                    <div class="form-control mt-4 p-4">
+                        <h4>Score Status</h4>
+                        <label for="wins" class="form-label">Wins</label>
+                        <input type="text" class="form-control" name="wins" id="wins" placeholder="Wins count...">
+                        <br/>
+                        <label for="defeats" class="form-label">Defeats</label>
+                        <input type="text" class="form-control" name="defeats" id="defeats" placeholder="Defeats count...">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-3">
+                    <div class="form-control p-3">
+                        <label for="featured_image" class="form-label"><strong>Featured Image</strong></label>
+                        <input type="file" name="image" class="form-control" id="featured_image">
+                    </div>
+                    <div class="form-control mt-4 p-3">
+                        <label for="category">Categories:</label><br/><br/>
+                        <select class="form-select" id="category" name="category">
+                            <% for(var category of categories){ %>
+                                <option value="<%= category._id %>"><%= category.name %></option>
+                            <% } %> 
+                        </select>
+                    </div>
+                    <br/><br/>
+                    <button type="submit" class="btn btn-primary btn-lg w-100">Add Article</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('../layout/footer') %> 

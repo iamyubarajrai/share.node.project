@@ -1,0 +1,70 @@
+<%- include("../layout/header") %>
+<style>
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+</style>
+<main class="form-signin w-100 m-auto text-center">
+    <% if (message) { %>
+      <div class="alert mt-3 mb-3 alert-dismissible fade show alert-<%= message.type %>" role="alert">
+          <button class="btn-close" type="button" data-bs-dismiss="alert" area-label="close"></button>
+          <strong><%= message.message %></strong>
+      </div>
+    <% } %>
+    <form action="/user/sign-in" method="POST">
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+      <div class="form-floating">
+        <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+        <label for="email">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+        <label for="password">Password</label>
+      </div>
+  
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    </form>
+    <div class="mt-4">
+      <a href="/" class="link-success p-4 text-decoration-none" title="Go back">&larr;Go back</a>
+      <a href="/user/register" class="link-primary p-4 text-decoration-none" title="Register User">
+        <span class="fa fa-user-plus"></span>
+        Register User
+      </a>
+    </div>
+  </main>
+<%- include("../layout/footer") %> 

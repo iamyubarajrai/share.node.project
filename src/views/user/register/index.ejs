@@ -1,0 +1,81 @@
+<%- include("../layout/header") %>
+<style>
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+</style>
+<main class="form-signin w-100 m-auto text-center">
+  <% if (typeof alert != "undefined") { %>
+    <% alert.forEach(error => { %>
+    <div class="alert p-0 alert-warning alert-dismissible fade show" role="alert">
+      <%= error.msg %>
+    </div>
+    <% }) %>
+  <% } %>
+    <form action="/user/register" method="POST">
+      <h1 class="h3 mb-3 fw-normal">Register User</h1>
+      <div class="form-floating">
+        <input type="text" class="form-control" name="fullname" id="fullname" placeholder="ie: Yubaraj Rai" value="<%= (typeof(user) != "undefined") ? user.fullname: '' %>">
+        <label for="fullname">Full Name</label>
+      </div>
+      <div class="form-floating">
+        <input type="text" class="form-control" name="address" id="address" placeholder="ie: Koteshwor, Kathmandu, Nepal" value="<%= (typeof(user) != "undefined") ? user.address: '' %>">
+        <label for="address">Address</label>
+      </div>
+      <div class="form-floating">
+        <input type="text" class="form-control" name="phone" id="phone" placeholder="ie: 9852079777" value="<%= (typeof(user) != "undefined") ? user.phone: '' %>">
+        <label for="phone">Phone</label>
+      </div>
+      <div class="form-floating">
+        <input type="text" class="form-control" name="email" id="email" placeholder="ie: name@example.com" value="<%= (typeof(user) != "undefined") ? user.email: '' %>">
+        <label for="email">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password" value="<%= (typeof(user) != "undefined") ? user.password : '' %>">
+        <label for="password">Password</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" name="cpassword" id="cpassword" placeholder="Confirm Password">
+        <label for="cpassword">Confirm Password</label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
+    </form>
+    <div class="mt-4">
+        Already have an account?<br/>
+      <a href="/user" class="link-primary p-4 text-decoration-none" title="Login User">
+        <span class="fa fa-sign-in"></span>
+        &nbsp;&nbsp;Sign In
+      </a>
+    </div>
+  </main>
+<%- include("../layout/footer") %> 

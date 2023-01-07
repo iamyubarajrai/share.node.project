@@ -1,0 +1,59 @@
+<%- include('../layout/header') %> 
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="display-6">All Articles</h1>
+            <a href="/dashboard/articles/add" class="btn btn-primary">Add New Article</a>
+            <% if (message) { %>
+                <div class="alert mt-3 mb-3 alert-dismissible fade show alert-<%= message.type %>" role="alert">
+                    <button class="btn-close" type="button" data-bs-dismiss="alert" area-label="close"></button>
+                    <strong><%= message.message %></strong>
+                </div>
+            <% } %>
+        </div>
+        <div class="col-12 mt-5 mb-5">
+        <% if (articles) { %>            
+            <table id="dataTable" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>S.N.</th>
+                        <th>Featured Image</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% articles.forEach((article, index) => { %>
+                        <tr>
+                            <td><%= index + 1 %> </td>
+                            <td>
+                                <img src="/uploads/<%= article.image %>" width="40" alt="" />
+                            </td>
+                            <td><%= article.title %></td>
+                            <td>
+                                <% categories.forEach(category => {
+                                    if(article.category_id.valueOf() == category._id) { %>
+                                        <%= category.name %>
+                                    <% }
+                                }); %> 
+                            </td>
+                            <td>
+                                <a href="/dashboard/articles/edit/<%= article._id %>" class="btn btn-primary">
+                                    <span class="fa fa-edit"></span>
+                                </a>
+                                <a href="/dashboard/articles/delete/<%= article._id %>" class="btn btn-danger">
+                                    <span class="fa fa-trash"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="lead">No articles found!</p>
+        <% } %> 
+        </div>
+    </div>
+</div>
+<%- include('../layout/footer') %> 

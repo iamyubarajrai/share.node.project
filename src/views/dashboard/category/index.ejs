@@ -1,0 +1,49 @@
+<%- include('../layout/header') %> 
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="display-6">All Categories</h1>
+            <a href="/dashboard/categories/add" class="btn btn-primary">Add New Category</a>
+            <% if (message) { %>
+                <div class="alert mt-3 mb-3 alert-dismissible fade show alert-<%= message.type %>" role="alert">
+                    <button class="btn-close" type="button" data-bs-dismiss="alert" area-label="close"></button>
+                    <strong><%= message.message %></strong>
+                </div>
+            <% } %>
+        </div>
+        <div class="col-12 mt-5 mb-5">
+        <% if (categories) { %>            
+            <table id="dataTable" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>S.N.</th>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% categories.forEach((category, index) => { %>
+                        <tr>
+                            <td><%= index + 1 %> </td>
+                            <td><%= category.name %></td>
+                            <td>
+                                <% if(category.name != "Uncategorized") { %>
+                                    <a href="/dashboard/categories/edit/<%= category._id %>" class="btn btn-primary">
+                                        <span class="fa fa-edit"></span>
+                                    </a>
+                                    <a href="/dashboard/categories/delete/<%= category._id %>" class="btn btn-danger">
+                                        <span class="fa fa-trash"></span>
+                                    </a>
+                                <% } %>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="lead">No categories found!</p>
+        <% } %> 
+        </div>
+    </div>
+</div>
+<%- include('../layout/footer') %> 
